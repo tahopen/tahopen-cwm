@@ -1,5 +1,5 @@
-# pentaho-cwm #
-Pentaho Common Warehouse Metamodel
+# tahopen-cwm #
+Tahopen Common Warehouse Metamodel
 
 #### Pre-requisites for building the project:
 * Maven, version 3+

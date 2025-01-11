@@ -10,6 +10,33 @@
   <artifactId>tahopen-cwm</artifactId>
   <version>0.1.0.0</version>
   <packaging>jar</packaging>
+  
+  <name>Tahopen CWM</name>
+  <url>https://www.tahopen.org</url>
+  <description>Common Warehouse Metamodel.</description>
+
+  <scm>
+    <connection>scm:git:git://github.com/tahopen/tahopen-cwm.git</connection>
+    <developerConnection>scm:git:git@github.com:tahopen/cwm.git</developerConnection>
+    <url>https://github.com/tahopen/tahopen-cwm</url>
+ </scm>  
+
+  <developers>
+    <developer>
+      <id>marciojv</id>
+      <name>Marcio Junior Vieira</name>
+      <email>marcio@tahopen.org</email>
+    </developer>
+  </developers>
+  
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License, Version 2.1</name>
+      <url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+    
   <dependencies>
     <dependency>
       <groupId>org.netbeans</groupId>
@@ -48,4 +75,104 @@
       <scope>compile</scope>
     </dependency>
   </dependencies>
+  
+ <build>
+    <plugins>
+       
+ <!-- Generate java docs -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- sign key gpg--> 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.0.1</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>deploy</phase>         
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- publish to Maven Central --> 
+      <plugin>
+         <groupId>org.sonatype.central</groupId>
+         <artifactId>central-publishing-maven-plugin</artifactId>
+         <version>0.6.0</version>
+         <extensions>true</extensions>
+         <configuration>
+           <publishingServerId>maven-central-snapshots</publishingServerId>
+         </configuration>
+      </plugin>          
+    </plugins>
+
+  </build>
+
+  <distributionManagement>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>    
+  </distributionManagement>
+  
+  <profiles>
+    <profile>
+      <id>pentaho</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>pentaho-public</id>
+          <name>Pentaho Public</name>
+          <url>https://repo.orl.eng.hitachivantara.com/artifactory/pnt-mvn/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>pentaho-public</id>
+          <name>Pentaho Public</name>
+          <url>https://repo.orl.eng.hitachivantara.com/artifactory/pnt-mvn/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+
+  
 </project>

@@ -13,13 +13,13 @@
   
   <name>Tahopen CWM</name>
   <url>https://www.tahopen.org</url>
-  <description>Common Warehouse Metamodel.</description>
+  <description>Tahopen Common Warehouse Metamodel.</description>
 
   <scm>
     <connection>scm:git:git://github.com/tahopen/tahopen-cwm.git</connection>
     <developerConnection>scm:git:git@github.com:tahopen/cwm.git</developerConnection>
     <url>https://github.com/tahopen/tahopen-cwm</url>
- </scm>  
+  </scm>  
 
   <developers>
     <developer>

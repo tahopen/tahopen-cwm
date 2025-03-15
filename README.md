@@ -17,7 +17,7 @@ $ mvn clean install -Drelease
 ```
 
 This will build, unit test, and package the whole project (all of the sub-modules). The resulting jar file
-artifact will be generated in: ```pentaho-cwm/target```
+artifact will be generated in: ```tahopen-cwm/target```
 
 __IntelliJ__
 
